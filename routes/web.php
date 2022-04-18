@@ -21,5 +21,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function(){
-    return view('layouts.website');
+    return view('website.home');
+});
+Route::get('/category', function(){
+    return view('website.category');
+});
+Route::get('/post', function(){
+    return view('website.post');
 });
