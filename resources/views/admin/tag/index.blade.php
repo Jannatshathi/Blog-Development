@@ -44,7 +44,7 @@
                                 <tr>
                                     <td>{{ $tag->id }}</td>
                                     <td>{{ $tag->name }}</td>
-                                    <td>{{ $tag->Slug }}</td>
+                                    <td>{{ $tag->slug }}</td>
                                     <td>
                                         {{ $tag->id }}
                                     </td>
