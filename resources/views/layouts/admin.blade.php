@@ -141,6 +141,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('tag.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                Tags
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
