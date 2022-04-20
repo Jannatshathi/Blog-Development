@@ -49,8 +49,8 @@
                                         {{ $tag->id }}
                                     </td>
                                     <td class="d-flex">
-                                        <a href="{{ route('Tag.edit', [$tag->id])}}" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i></a>
-                                        <form action="{{ route('Tag.destroy', [$tag->id]) }}" class="mr-1" method="POST">
+                                        <a href="{{ route('tag.edit', [$tag->id])}}" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i></a>
+                                        <form action="{{ route('tag.destroy', [$tag->id]) }}" class="mr-1" method="POST">
                                             @method('DELETE')
                                             @csrf 
                                             <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> </button>
@@ -61,7 +61,7 @@
                                 @endforeach
                                @else
                                <tr>
-                                   <td colspan="4">
+                                   <td colspan="5">
                                     <h5 class="text-center">No tags found.</h5>
                                    </td>
                                </tr>
