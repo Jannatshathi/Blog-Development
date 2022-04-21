@@ -59,6 +59,14 @@ class PostController extends Controller
             'published_at' => Carbon::now(),
         ]);
 
+        if ($request->hasFile('image')){
+            $image = $request->image;
+            $image_new_name = time() .'.'. $image->getClientOriginalExtension();
+            $image->move('storage/post', $image_new_name);
+            $post->image = '/storage/post/' . $image_new_name;
+            $post->save();
+        }
+
         Session::flash('success', 'Post created successfully');
         return redirect()->back();
     }
