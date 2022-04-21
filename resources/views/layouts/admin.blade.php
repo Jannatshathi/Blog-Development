@@ -149,6 +149,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('post.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                Posts
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
@@ -197,12 +205,17 @@
 
     <script src="{{ asset('admin')}}/js/adminlte.min.js?v=3.2.0"></script>
 
+    <script src="{{ asset('admin')}}/js/bs-custom-file-input.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
         @if(Session::has('success'))
         toastr.success("{{ Session::get('success')}}");
         @endif
+        $(document).ready(function () {
+    bsCustomFileInput.init()
+  })
     </script>
 </body>
 
