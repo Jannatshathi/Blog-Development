@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">Post Edit - {{ $post->name}}</h3>
+                            <h3 class="card-title">Post Edit {{ $post->name}}</h3>
                             <a href="{{route('post.index')}}" class="btn btn-primary">Go Back To Post List</a>
                         </div>
                     </div>
@@ -68,13 +68,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea name="description" id="description" rows="4" class="form-control"  
-                                    placeholder="Enter description">{{ $post->description }}</textarea>
+                                    <label>Choose Post Tags</label>
+                                    <div class=" d-flex flex-wrap">
+                                        @foreach($tags as $tag) 
+                                        <div class="custom-control custom-checkbox" style="margin-right: 20px">
+                                            <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{ $tag->id}}" value="{{ $tag->id }}"
+                                            @foreach($post->tags as $t)
+                                                @if($tag->id == $t->id) checked @endif
+                                            @endforeach
+                                            >
+                                            <label for="tag{{ $tag->id}}" class="custom-control-label">{{ $tag->name }}</label>
+                                        </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Description</label>
+                                    <textarea name="description" id="description" rows="4" class="form-control"
+                                        placeholder="Enter description">{{ $post->description }}</textarea>
+                                </div>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-lg btn-primary">Update Post</button>

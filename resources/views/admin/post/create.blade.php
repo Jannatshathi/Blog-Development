@@ -55,16 +55,27 @@
                                     <label for="image">Image</label>
                                     <div class="custom-file">
                                         <input type="file" name="image" class="custom-file-input" id="image">
-                                        <label class="custom-file-label" for="image">Choose File</label>
+                                        <label class="custom-file-label" for="image">Choose file</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Choose Post Tags</label>
+                                    <div class=" d-flex flex-wrap">
+                                        @foreach($tags as $tag) 
+                                        <div class="custom-control custom-checkbox" style="margin-right: 20px">
+                                            <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{ $tag->id}}" value="{{ $tag->id }}">
+                                            <label for="tag{{ $tag->id}}" class="custom-control-label">{{ $tag->name }}</label>
+                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea name="description" id="description" rows="4" class="form-control"  
-                                    placeholder="Enter description">{{ old('description') }}</textarea>
+                                    <label for="exampleInputPassword1">Description</label>
+                                    <textarea name="description" id="description" rows="4" class="form-control"
+                                        placeholder="Enter description">{{ old('description') }}</textarea>
                                 </div>
-                                
+                            </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
