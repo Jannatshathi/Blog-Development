@@ -41,14 +41,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate ($request, [
+        $this->validate($request, [
             'title' => 'required|unique:posts,title',
             'image' => 'required|image',
             'description' => 'required',
             'category' => 'required',
         ]);
-        
-        
+
         $post = Post::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
@@ -59,10 +58,11 @@ class PostController extends Controller
             'published_at' => Carbon::now(),
         ]);
 
-        if ($request->hasFile('image')){
+
+        if($request->hasFile('image')){
             $image = $request->image;
-            $image_new_name = time() .'.'. $image->getClientOriginalExtension();
-            $image->move('storage/post', $image_new_name);
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/post/', $image_new_name);
             $post->image = '/storage/post/' . $image_new_name;
             $post->save();
         }
@@ -103,7 +103,29 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => "required|unique:posts,title, $post->id",
+            'description' => 'required',
+            'category' => 'required',
+        ]);
+        
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title);
+        $post->description = $request->description;
+        $post->category_id = $request->category;
+
+
+        if($request->hasFile('image')){
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/post/', $image_new_name);
+            $post->image = '/storage/post/' . $image_new_name;
+        }
+
+        $post->save();
+
+        Session::flash('success', 'Post updated successfully');
+        return redirect()->back();
     }
 
     /**
@@ -114,6 +136,15 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if($post){
+            if(file_exists(public_path($post->image))){
+                unlink(public_path($post->image));
+            }
+
+            $post->delete();
+            Session::flash('Post deleted successfully');
+        }
+
+        return redirect()->back();
     }
 }

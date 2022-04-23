@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">post Edit - {{ $post->name}}</h3>
+                            <h3 class="card-title">Post Edit - {{ $post->name}}</h3>
                             <a href="{{route('post.index')}}" class="btn btn-primary">Go Back To Post List</a>
                         </div>
                     </div>
