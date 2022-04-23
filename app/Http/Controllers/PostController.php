@@ -82,7 +82,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // return view('admin.post.show', compact('post'));
+        return view('admin.post.show', compact('post'));
     }
 
     /**
@@ -107,6 +107,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        // dd($request->all());
         $this->validate($request, [
             'title' => "required|unique:posts,title, $post->id",
             'description' => 'required',
@@ -119,7 +120,7 @@ class PostController extends Controller
         $post->category_id = $request->category;
 
         $post->tags()->sync($request->tags);
-
+        
         if($request->hasFile('image')){
             $image = $request->image;
             $image_new_name = time() . '.' . $image->getClientOriginalExtension();
