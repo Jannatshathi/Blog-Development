@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="{{ asset('admin')}}/css/adminlte.min.css?v=3.2.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    @yield('style')
 
     <script nonce="cf45eb7d-218c-4f85-be0f-041a5fd522ac">
         (function (w, d) {
@@ -208,7 +209,7 @@
     <script src="{{ asset('admin')}}/js/bs-custom-file-input.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+    @yield('script')
     <script>
         @if(Session::has('success'))
         toastr.success("{{ Session::get('success')}}");
