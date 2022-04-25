@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
+    use HasFactory;
     protected $guarded = ['created_at', 'updated_at'];
     //for timestamps
     protected $dates = [

@@ -72,7 +72,7 @@
                                 @endforeach
                                @else
                                <tr>
-                                   <td colspan="6">
+                                   <td colspan="7">
                                     <h5 class="text-center">No posts found.</h5>
                                    </td>
                                </tr>
