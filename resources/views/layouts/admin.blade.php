@@ -151,7 +151,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('post.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
+                                <i class="nav-icon fas fa-pen-square"></i>
                                 <p>
                                 Posts
                                 </p>
@@ -162,6 +162,14 @@
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                  Logout
+                                </p>
+                            </a>
+                        </li>
+                        <li class="text-center mt-5">
+                            <a href="{{route('website')}}" class="btn btn-primary text-white"  target="_blank">
+                                {{-- target="_blank"--->use kora hoi new tab open r jnno --}}
+                                <p class="mb-0">
+                              View website
                                 </p>
                             </a>
                         </li>
