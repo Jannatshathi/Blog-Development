@@ -30,5 +30,7 @@ Route::resource('/category', CategoryController::class);
 Route::resource('/tag', TagController::class);
 Route::resource('/post', PostController::class);
 Route::resource('/user', UserController::class);
+Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
+Route::post('/profile', [App\Http\Controllers\UserController::class, 'profile_update'])->name('user.profile.update');
 
 });
