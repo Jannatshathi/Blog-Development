@@ -9,6 +9,8 @@ class FrontendController extends Controller
 {
     public function home(){
         $posts = Post::orderBy('created_at', 'DESC')->take(5)->get();
+        //laravel collection
+        //$chunk = $collection->splice(2, 1);----demo example
         $firstPost2 = $posts->splice(0, 2);
         $middlePost = $posts->splice(0, 1);
         $lastPosts = $posts->splice(0);
