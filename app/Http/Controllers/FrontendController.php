@@ -9,9 +9,19 @@ class FrontendController extends Controller
 {
     public function home(){
         $posts = Post::orderBy('created_at', 'DESC')->take(5)->get();
+        $firstPost2 = $posts->splice(0, 2);
+        $middlePost = $posts->splice(0, 1);
+        $lastPosts = $posts->splice(0);
+
+        $footerPosts = Post::with('category', 'user')->inRandomOrder()->limit(4)->get();
+        $firstFooterPost = $footerPosts->splice(0, 1);
+        $middleFooterPost2 = $footerPosts->splice(0, 2);
+        $lastFooterPost = $footerPosts->splice(0, 1);
+
         $recentPosts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->simplePaginate(9);
 
-        return view('website.home', compact(['posts', 'recentPosts']));
+        return view('website.home', compact(['posts', 'recentPosts', 'firstPost2', 'middlePost', 'lastPosts', 
+        'footerPosts', 'firstFooterPost', 'middleFooterPost2', 'lastFooterPost']));
     }
 
     public function about(){
