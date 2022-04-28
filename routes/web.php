@@ -34,3 +34,14 @@ Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])-
 Route::post('/profile', [App\Http\Controllers\UserController::class, 'profile_update'])->name('user.profile.update');
 
 });
+
+// Route::get('/test', function(){
+//     $id = 60;
+//     $posts = App\Models\Post::all();
+//     foreach($posts as $post){
+//         $post->image = "https://i.picsum.photos/id/".$id."/695/536/354.jpg";
+//         $post->save();
+//         $id++;
+//     }
+//     return $posts;
+// });

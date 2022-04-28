@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -40,8 +42,12 @@ class FrontendController extends Controller
 
     public function post($slug){
         $post = Post::with('category', 'user')->where('slug', $slug)->first();
+        $posts = Post::with('category', 'user')->inRandomOrder()->limit(3)->get();
+
+        $categories = Category::all();
+        $tags = Tag::all();
         if($post){
-            return view('website.post', compact('post'));
+            return view('website.post', compact('post', 'posts', 'categories', 'tags'));
         }
         else{
             return redirect('/');
