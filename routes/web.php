@@ -39,7 +39,7 @@ Route::post('/profile', [App\Http\Controllers\UserController::class, 'profile_up
 //     $id = 60;
 //     $posts = App\Models\Post::all();
 //     foreach($posts as $post){
-//         $post->image = "https://i.picsum.photos/id/".$id."/695/536/354.jpg";
+//         $post->image = "https://i.picsum.photos/id/".$id."/200/300.jpg";
 //         $post->save();
 //         $id++;
 //     }
