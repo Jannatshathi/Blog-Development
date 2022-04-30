@@ -165,6 +165,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('setting.index') }}" class="nav-link">
+                              <i class="nav-icon fas fa-cog"></i>
+                              <p>
+                                Setting
+                              </p>
+                            </a>
+                          </li>
                         <li class="nav-header">Your Account</li>
                         <li class="nav-item">
                           <a href="{{ route('user.profile') }}" 
@@ -176,7 +184,10 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                            <form action="{{route('logout')}}" id="logout-form" class="d-none" method="POST">
+                                @csrf
+                            </form>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                  Logout

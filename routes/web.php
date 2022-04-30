@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 
@@ -33,6 +34,9 @@ Route::resource('/user', UserController::class);
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('user.profile');
 Route::post('/profile', [App\Http\Controllers\UserController::class, 'profile_update'])->name('user.profile.update');
 
+// setting
+Route::get('setting', [App\Http\Controllers\SettingController::class, 'edit'])->name('setting.index');
+Route::post('setting', [App\Http\Controllers\SettingController::class, 'update'])->name('setting.update');
 });
 
 // Route::get('/test', function(){
