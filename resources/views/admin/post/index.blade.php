@@ -81,7 +81,10 @@
                             </tbody>
                         </table>
                     </div>
-
+                    <!-- /.card-body -->
+                    <div class="card-footer d-flex justify-content-center">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
 
             </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
@@ -38,6 +39,11 @@ Route::post('/profile', [App\Http\Controllers\UserController::class, 'profile_up
 // setting
 Route::get('setting', [App\Http\Controllers\SettingController::class, 'edit'])->name('setting.index');
 Route::post('setting', [App\Http\Controllers\SettingController::class, 'update'])->name('setting.update');  
+
+// Contact message
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::get('/contact/show/{id}', [App\Http\Controllers\ContactController::class, 'show'])->name('contact.show');
+Route::delete('/contact/delete/{id}', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contact.destroy');
 });
 
 // Route::get('/test', function(){
