@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\DashboardController;
 
 
 Auth::routes();
@@ -24,9 +25,9 @@ Route::get('/post/{slug}', [App\Http\Controllers\FrontendController::class, 'pos
 
 //admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
-    Route::get('/dashboard', function(){
-        return view('admin.dashboard.index');
-});
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+        // Route::get('/dashboard','DashboardController@index')->name('dashboard');
+
 Route::resource('/category', CategoryController::class);
 Route::resource('/tag', TagController::class);
 Route::resource('/post', PostController::class);
@@ -36,7 +37,7 @@ Route::post('/profile', [App\Http\Controllers\UserController::class, 'profile_up
 
 // setting
 Route::get('setting', [App\Http\Controllers\SettingController::class, 'edit'])->name('setting.index');
-Route::post('setting', [App\Http\Controllers\SettingController::class, 'update'])->name('setting.update');
+Route::post('setting', [App\Http\Controllers\SettingController::class, 'update'])->name('setting.update');  
 });
 
 // Route::get('/test', function(){
